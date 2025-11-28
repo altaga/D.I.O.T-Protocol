@@ -1,3 +1,9 @@
 {
-    "mcpServers": {}
+    "mcpServers": {
+        "coinbase-mcp": {
+            "url": "https://docs.cdp.coinbase.com/mcp",
+            "disabled": false,
+            "autoApprove": []
+        }
+    }
 }

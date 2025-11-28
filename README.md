@@ -344,6 +344,31 @@ Created 6 user-triggered hooks for instant code quality checks:
 **Without Kiro:** 6-8 weeks of development  
 **With Kiro:** 2 weeks from concept to production
 
+### Model Context Protocol (MCP) Integration
+
+The project integrates Coinbase's MCP server for real-time access to blockchain documentation and CDP APIs:
+
+**Configuration** (`.kiro/settings/mcp.json`):
+```json
+{
+  "mcpServers": {
+    "coinbase-mcp": {
+      "url": "https://docs.cdp.coinbase.com/mcp",
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+**Benefits:**
+- **Live Documentation** - Query Coinbase Developer Platform docs directly in Kiro
+- **API Discovery** - Find relevant CDP endpoints and code examples
+- **Blockchain Context** - Get Base network info, x402 protocol details, wallet APIs
+- **Development Speed** - No context switching to browser for documentation
+
+**Usage:** Ask Kiro questions like "How do I create a wallet with CDP?" or "Show me x402 payment examples" and it will query the MCP server for accurate, up-to-date information.
+
 ### Kiro Configuration
 
 All Kiro configuration is in the `.kiro/` directory:
@@ -373,14 +398,14 @@ All Kiro configuration is in the `.kiro/` directory:
 │   └── commit-message-helper.kiro.hook
 │
 └── settings/
-    └── mcp.json                    # MCP server configuration (planned)
+    └── mcp.json                    # MCP server configuration
 ```
 
 **How to Use:**
 - **Specs:** Open any `requirements.md` and ask Kiro to implement features
 - **Steering:** Automatically loaded - Kiro knows project context in every conversation
 - **Hooks:** Right-click in editor → "Run Kiro Hook" → Select hook
-- **MCP:** Future enhancement - Coinbase MCP for blockchain queries planned
+- **MCP:** Coinbase Developer Platform MCP server integrated for blockchain documentation and API queries
 
 ---
 
