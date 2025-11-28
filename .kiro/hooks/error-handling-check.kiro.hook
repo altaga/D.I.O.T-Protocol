@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Error Handling Review",
+  "description": "Checks for proper error handling and edge cases",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Review the current file for error handling: missing try-catch blocks, unhandled promise rejections, unchecked null/undefined, missing input validation, and edge cases. Suggest where error handling should be added."
+  }
+}

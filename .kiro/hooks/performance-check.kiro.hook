@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Performance Analyzer",
+  "description": "Identifies potential performance bottlenecks",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Analyze the codebase for performance issues: inefficient loops, unnecessary re-renders, memory leaks, N+1 queries, blocking operations, and unoptimized algorithms. Suggest specific optimizations with expected impact."
+  }
+}

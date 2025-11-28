@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Code Complexity Analyzer",
+  "description": "Identifies overly complex functions that need refactoring",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Analyze the codebase for functions with high cyclomatic complexity, deeply nested logic, or long functions (>50 lines). Suggest refactoring opportunities to improve maintainability and readability."
+  }
+}

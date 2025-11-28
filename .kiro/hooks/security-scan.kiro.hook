@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Security Scan",
+  "description": "Scans code for common security vulnerabilities",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Perform a security audit of the codebase. Look for: SQL injection risks, XSS vulnerabilities, hardcoded secrets, insecure dependencies, authentication issues, and other common security problems. Provide specific recommendations for each finding."
+  }
+}

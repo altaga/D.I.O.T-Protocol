@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Lint Check",
+  "description": "Checks for linting errors and code style violations",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check the current file for linting issues, code style violations, and potential bugs. Use getDiagnostics to identify problems and suggest fixes if any issues are found."
+  }
+}
