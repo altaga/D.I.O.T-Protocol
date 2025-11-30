@@ -141,6 +141,10 @@ setInterval(() => {
 ### diot-client — Chat Interface
 > React Native · Expo · React Native Paper
 
+#### Screenshots:
+
+<img src="./assets/agent1.png" width="32%"> <img src="./assets/agent2.png" width="32%"> <img src="./assets/agent3.png" width="32%"> 
+
 Natural language interface that abstracts blockchain complexity from end users.
 
 ```javascript
@@ -155,6 +159,53 @@ const response = await fetch("/api/chatWithAgent", {
 
 ---
 
+### diot-iot — Hardware Sensor Device
+> Arduino/ESP32 · C++ · WiFi · HTTP Client
+
+#### Physical Devices:
+
+<img src="./assets/iot.png" width="50%">
+
+#### Screenshots (Monitor):
+
+<img src="./assets/monitor1.png" width="32%"> <img src="./assets/monitor2.png" width="32%"> <img src="./assets/monitor3.png" width="32%"> 
+
+Physical IoT hardware that collects real-world sensor data and publishes it to the marketplace.
+
+```cpp
+// Connect to WiFi and publish sensor readings
+WiFiClient client;
+HTTPClient http;
+
+void loop() {
+  // Read sensors (temperature, humidity, pressure, TVOC, eCO2, accelerometer)
+  float temperature = readTemperature();
+  float humidity = readHumidity();
+  
+  // Publish to marketplace
+  http.begin(client, API_ENDPOINT);
+  http.addHeader("Content-Type", "application/json");
+  String payload = buildSensorPayload(temperature, humidity, ...);
+  http.POST(payload);
+  
+  delay(10000); // Publish every 10 seconds
+}
+```
+
+**Supported Hardware:**
+- ESP32 / ESP8266
+- M5Stack devices
+- Arduino with WiFi capability
+
+**Sensor Types:**
+- Environmental (temperature, humidity, pressure)
+- Air quality (TVOC, eCO2)
+- Motion (accelerometer, gyroscope, magnetometer)
+
+📄 [Full Code](./diot-iot/code.ino)
+
+---
+
 # Built with Kiro AI — Professional AI-Assisted Development
 
 > **2 weeks from concept to production** — 1,450+ lines of code, 85% AI-generated
@@ -166,6 +217,8 @@ Kiro becomes a serious development tool when you treat it like one. With proper 
 ### Development Approach
 
 We combined **spec-driven development** for complex features (50+ requirements across 5 specs) with **conversational coding** for rapid iteration. Kiro read our specs and implemented features systematically while maintaining consistent code style through steering documents.
+
+<img src="./assets/kiro.png">
 
 ### Kiro Features Used
 
