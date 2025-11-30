@@ -9,13 +9,17 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Built with Kiro](https://img.shields.io/badge/Built%20with-Kiro-blue)](https://kiro.ai)
 
-# FAST LINKS: 
+# FAST LINKS (if you're a judge, click these links):
 
-🔗 [Live Demo](https://diot-client.expo.app) · 📁 [Kiro Config](./.kiro) · 🛠️ [Development Guide](#built-with-kiro-ai)
+* [Live Demo](https://diot-client.expo.dev)
+* [Kiro Config](./.kiro)
+* [Development Guide](#built-with-kiro-ai)
 
 ## Overview
 
 **D.I.O.T Protocol** is a trustless, self-sustaining data marketplace where IoT devices autonomously buy, sell, and settle for real-world sensor data. Each device runs a lightweight agent that uses the CDP Facilitator to enable machine-to-machine payments via x402 protocol on Base network.
+
+<img src="./assets/architecture.png">
 
 | Capability | Description |
 |------------|-------------|
@@ -24,8 +28,6 @@
 | 🔗 On-Chain Verification | Sensor readings signed, validated, and anchored on-chain |
 | 📈 Financial Incentives | Data providers earn revenue per query |
 | 💬 Natural Language Interface | AI agents translate conversational queries into transactions |
-
-<img src="./assets/architecture.png">
 
 ### How It Works
 
@@ -153,16 +155,17 @@ const response = await fetch("/api/chatWithAgent", {
 
 ---
 
-## Built with Kiro AI
+# Built with Kiro AI — Professional AI-Assisted Development
 
-> **2 weeks from concept to production** — 3,700+ lines of code, 85% AI-generated
+> **2 weeks from concept to production** — 1,450+ lines of code, 85% AI-generated
+
+**This isn't "vibe coding" — it's professional software engineering accelerated by AI.**
+
+Kiro becomes a serious development tool when you treat it like one. With proper configuration (specs, steering, hooks, MCP), it handles production-grade complexity while you maintain architectural control. The result: professional developers with domain expertise achieve 10x implementation velocity.
 
 ### Development Approach
 
-| Method | Use Case | Example |
-|--------|----------|---------|
-| **Spec-Driven** | Complex features | 50+ requirements with acceptance criteria |
-| **Vibe Coding** | Rapid prototyping | "Build an AI agent that queries IoT sensors" → 400+ lines generated |
+We combined **spec-driven development** for complex features (50+ requirements across 5 specs) with **conversational coding** for rapid iteration. Kiro read our specs and implemented features systematically while maintaining consistent code style through steering documents.
 
 ### Kiro Features Used
 
@@ -170,7 +173,7 @@ const response = await fetch("/api/chatWithAgent", {
 
 **📋 Steering Documents** — 5 always-included context docs eliminated repetitive explanations. *Result: 90% reduction in "how do I..." questions*
 
-**🔌 MCP Integration** — Coinbase Developer Platform server for live blockchain documentation
+**🔌 MCP Integration** — Coinbase Developer Platform server for live x402 development on this project.
 
 ```json
 // .kiro/settings/mcp.json
@@ -179,14 +182,16 @@ const response = await fetch("/api/chatWithAgent", {
 
 ### Development Metrics
 
+> *Estimated values — this project was built from zero to production entirely with AI assistance, making precise tracking impractical.*
+
 | Component | Lines | AI Generated | Time Saved |
 |-----------|-------|--------------|------------|
-| diot-agent | 600 | 95% | 12h |
-| diot-api | 400 | 90% | 8h |
-| diot-client | 800 | 80% | 10h |
-| diot-device | 700 | 80% | 10h |
-| diot-iot | 200 | 70% | 4h |
-| **Total** | **3,700+** | **85%** | **55h** |
+| diot-agent | ~320 | ~95% | ~6h |
+| diot-api | ~167 | ~90% | ~3h |
+| diot-client | ~561 | ~80% | ~8h |
+| diot-device | ~261 | ~80% | ~5h |
+| diot-iot | ~152 | ~70% | ~3h |
+| **Total** | **~1,461** | **~85%** | **~25h** |
 
 ### Kiro Configuration
 
@@ -198,15 +203,23 @@ const response = await fetch("/api/chatWithAgent", {
 └── settings/       # MCP server configuration
 ```
 
+📄 [FULL CONFIG FOLDER](./kiro)
+
 ### Key Learnings
+
+**What makes the difference between toy projects and production systems?** Configuration and discipline.
+
+This project demonstrates that AI-assisted development can handle real-world complexity when you invest in proper infrastructure. The difference isn't the AI — it's how you set it up.
 
 | Insight | Impact |
 |---------|--------|
-| Write steering docs first | 1 hour saved 10+ hours of explanations |
-| Start vibe, then spec | Creativity + structure combined |
-| Trust AI output | 85% production-ready with good context |
-| Build hooks early | Minutes saved per use compound to hours |
-| Context is everything | Open files + steering = dramatically better suggestions |
+| **Infrastructure first, code second** | Steering + specs + hooks created a foundation for consistent, quality output |
+| **Write steering docs first** | 1 hour investment saved 10+ hours of repetitive explanations |
+| **Specs for complexity, chat for iteration** | Structured approach for features, conversational for refinement |
+| **Trust AI output with good context** | 85% production-ready code when Kiro has full project understanding |
+| **Build hooks early** | Automated quality checks compound — minutes saved per use = hours saved overall |
+| **Context is everything** | Open files + steering + MCP = dramatically better, architecture-aware suggestions |
+| **Real developers benefit most** | Domain knowledge + AI execution = 10x velocity on implementation |
 
 ---
 
