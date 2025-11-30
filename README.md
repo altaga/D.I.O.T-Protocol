@@ -1,4 +1,7 @@
 # D.I.O.T Protocol
+
+<img src="./assets/logoS.png">
+
 ## Decentralized Internet of Things Protocol
 
 > A machine-to-machine payments and data-exchange network powered by autonomous agents, x402 messaging, and on-chain verification. Where machines pay machines for truth.
@@ -11,8 +14,6 @@
 - [.kiro files](./.kiro)
 - [Kiro Development](#built-with-kiro-ai)
 - [AI Agent WebPage](https://diot-client.expo.app)
-
----
 
 ## Overview
 
@@ -27,33 +28,9 @@
 
 **The Vision**: Create a decentralized data marketplace where machines autonomously transact for truth. Data providers are financially incentivized to share accurate readings, while verification agents ensure integrity. No central authority, no subscriptions—just peer-to-peer data exchange with cryptographic guarantees.
 
----
-
 ## System Architecture
 
-```
-┌─────────────────┐      ┌──────────────────┐      ┌─────────────────┐
-│   diot-iot      │      │   diot-device    │      │   diot-client   │
-│   ESP32/M5      │─────▶│   Mobile Sensor  │      │   User App      │
-│   (Hardware)    │      │   (React Native) │      │   (Chat UI)     │
-└─────────────────┘      └──────────────────┘      └─────────────────┘
-         │                        │                          │
-         │                        │                          │
-         ▼                        ▼                          ▼
-    ┌────────────────────────────────────────────────────────────┐
-    │                      diot-api                              │
-    │              Express + x402 Payment Middleware             │
-    │                   LowDB (JSON Storage)                     │
-    └────────────────────────────────────────────────────────────┘
-                                 │
-                                 │ x402 Micropayments
-                                 ▼
-                    ┌─────────────────────────┐
-                    │      diot-agent         │
-                    │  LangChain + Ollama     │
-                    │  LangGraph Workflow     │
-                    └─────────────────────────┘
-```
+<img src="./assets/architecture.png">
 
 ### Machine-to-Machine Payment Flow
 
@@ -70,7 +47,33 @@
 
 **Key Innovation**: The AI agent acts as an autonomous economic actor, making payment decisions and executing transactions without human intervention. Data providers earn revenue per query, creating a self-sustaining marketplace.
 
----
+## How It Works
+
+### For Data Providers (Sensor Devices)
+1. Install the mobile app or configure hardware device
+2. Device automatically collects sensor data (accelerometer, gyroscope, etc.)
+3. Data is published to the marketplace every 10 seconds
+4. Earn micropayments when agents query your data
+
+### For Data Consumers (Users)
+1. Open the chat interface
+2. Ask questions in natural language: "Check sensor 0x123 for vibrations"
+3. AI agent autonomously pays for data and analyzes it
+4. Receive insights and alerts in conversational format
+
+### The Marketplace
+- **Data Providers** earn $0.001-$0.005 per query
+- **AI Agents** autonomously decide when to purchase data
+- **Blockchain** ensures trustless payment verification
+- **No subscriptions** - pay only for what you use
+
+### Technology Overview
+
+**Mobile Apps** - React Native + Expo for cross-platform (iOS/Android/Web)  
+**AI Agent** - LangChain + Ollama for natural language understanding  
+**Payments** - x402 protocol on Base network for micropayments  
+**Storage** - LowDB for sensor data (future: decentralized storage)  
+**Hardware** - ESP32/M5Stack support for professional deployments
 
 ## Component Details
 
@@ -107,12 +110,11 @@ app.use(paymentMiddleware(RECEIVING_ADDRESS, x402RouteConfigs, facilitator));
 ```
 
 **API Endpoints**:
-- `GET /api/sensors` - List all sensors (free)
-- `POST /api/sensors` - Submit reading (free)
+- `GET /api/sensors` - List all sensors available (free)
 - `GET /api/sensors/latest?address=0x...` - Latest reading ($0.001)
 - `GET /api/sensors/latestTop?address=0x...` - Last 10 readings ($0.005)
 
----
+[FULL CODE](./diot-api/index.js) 
 
 ### 2. diot-agent - Autonomous Economic Agent
 
@@ -159,7 +161,7 @@ if (Math.abs(x) > 3 || Math.abs(y) > 3 || Math.abs(z) > 3) {
 }
 ```
 
----
+[FULL CODE](./diot-agent/index.js)
 
 ### 3. diot-device - Data Provider Agent
 
@@ -203,7 +205,7 @@ setInterval(() => {
 }, 10000);
 ```
 
----
+[FULL CODE](./diot-device/src/app/index.js)
 
 ### 4. diot-client - Human Interface Layer
 
@@ -240,41 +242,10 @@ messages.map(msg => (
 ));
 ```
 
----
-
-## How It Works
-
-### For Data Providers (Sensor Devices)
-1. Install the mobile app or configure hardware device
-2. Device automatically collects sensor data (accelerometer, gyroscope, etc.)
-3. Data is published to the marketplace every 10 seconds
-4. Earn micropayments when agents query your data
-
-### For Data Consumers (Users)
-1. Open the chat interface
-2. Ask questions in natural language: "Check sensor 0x123 for vibrations"
-3. AI agent autonomously pays for data and analyzes it
-4. Receive insights and alerts in conversational format
-
-### The Marketplace
-- **Data Providers** earn $0.001-$0.005 per query
-- **AI Agents** autonomously decide when to purchase data
-- **Blockchain** ensures trustless payment verification
-- **No subscriptions** - pay only for what you use
+[FULL CODE](./diot-client/src/app/index.js)
 
 ---
-
-## Technology Overview
-
-**Mobile Apps** - React Native + Expo for cross-platform (iOS/Android/Web)  
-**AI Agent** - LangChain + Ollama for natural language understanding  
-**Payments** - x402 protocol on Base network for micropayments  
-**Storage** - LowDB for sensor data (future: decentralized storage)  
-**Hardware** - ESP32/M5Stack support for professional deployments
-
----
-
-## Built with Kiro AI
+# Built with Kiro AI
 
 This entire project was developed in 2 weeks using Kiro as the primary development partner. Here's how:
 
@@ -407,8 +378,6 @@ All Kiro configuration is in the `.kiro/` directory:
 - **Hooks:** Right-click in editor → "Run Kiro Hook" → Select hook
 - **MCP:** Coinbase Developer Platform MCP server integrated for blockchain documentation and API queries
 
----
-
 ## What We Learned
 
 **Steering docs first** - Spending 1 hour writing steering documents saved 10+ hours of repetitive explanations. Kiro remembered project conventions and applied them consistently.
@@ -420,8 +389,6 @@ All Kiro configuration is in the `.kiro/` directory:
 **Hooks compound** - Each hook saved minutes per use, but over dozens of uses, they saved hours. Building a hook library early pays dividends.
 
 **Context matters** - Keeping related files open and using steering docs made Kiro's suggestions dramatically better. It's not just about the prompt—it's about the environment.
-
----
 
 ## License
 
