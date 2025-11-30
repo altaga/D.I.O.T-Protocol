@@ -17,63 +17,55 @@
 
 ## Overview
 
-**D.I.O.T Protocol** (Decentralized Internet of Things Protocol) is a trustless, self-sustaining data marketplace where IoT devices autonomously buy, sell, and settle for real-world sensor data. Each device runs a lightweight agent that uses the CDP Facilitator to enable machine-to-machine payments via x402 protocol on Base network.
+**D.I.O.T Protocol** is a trustless, self-sustaining data marketplace where IoT devices autonomously buy, sell, and settle for real-world sensor data. Each device runs a lightweight agent that uses the CDP Facilitator to enable machine-to-machine payments via x402 protocol on Base network.
 
-**Core Capabilities:**
-- **Autonomous Agent Economy** - Devices operate as independent economic actors, buying and selling sensor data
-- **x402 Micropayments** - Pay $0.001-$0.005 per query using blockchain-based HTTP payment protocol
-- **On-Chain Verification** - Every sensor reading is signed, validated, and anchored on-chain
-- **Financial Incentives** - Data providers earn revenue; verification agents ensure data integrity
-- **Natural Language Interface** - AI agents translate conversational queries into machine transactions
-
-**The Vision**: Create a decentralized data marketplace where machines autonomously transact for truth. Data providers are financially incentivized to share accurate readings, while verification agents ensure integrity. No central authority, no subscriptions—just peer-to-peer data exchange with cryptographic guarantees.
-
-## System Architecture
+| Capability | Description |
+|------------|-------------|
+| 🤖 Autonomous Agent Economy | Devices operate as independent economic actors |
+| 💰 x402 Micropayments | $0.001-$0.005 per query via blockchain HTTP payments |
+| 🔗 On-Chain Verification | Sensor readings signed, validated, and anchored on-chain |
+| 📈 Financial Incentives | Data providers earn revenue per query |
+| 💬 Natural Language Interface | AI agents translate conversational queries into transactions |
 
 <img src="./assets/architecture.png">
 
-### Machine-to-Machine Payment Flow
+### How It Works
 
-1. **Data Provider (Sensor Device)**: Mobile app or hardware device collects accelerometer/gyroscope data
-2. **Data Publication**: Device agent POSTs to `/api/sensors` with signed sensor readings
-3. **On-Chain Storage**: API stores data in LowDB indexed by sensor address (future: on-chain anchoring)
-4. **Data Consumer (AI Agent)**: User sends natural language query via chat interface
-5. **Agent Decision**: AI agent determines which tool to invoke based on user intent
-6. **Autonomous Payment**: Agent wraps API request with x402 payment using viem wallet (CDP Facilitator)
-7. **Payment Verification**: API verifies blockchain payment before releasing data
-8. **Data Delivery**: API returns sensor data to paying agent
-9. **Value-Added Analysis**: Agent analyzes data (anomaly detection, trend analysis) and formats response
-10. **User Response**: Natural language answer with insights delivered to end user
+```
+┌─────────────────┐    POST /api/sensors    ┌─────────────────┐
+│  Sensor Device  │ ──────────────────────► │    diot-api     │
+│  (Data Provider)│                         │   (Marketplace) │
+└─────────────────┘                         └────────┬────────┘
+                                                     │
+┌─────────────────┐    x402 Payment + GET   ┌────────▼────────┐
+│   diot-client   │ ◄────────────────────── │   diot-agent    │
+│  (Chat Interface)│                        │  (AI + Wallet)  │
+└─────────────────┘                         └─────────────────┘
+```
 
-**Key Innovation**: The AI agent acts as an autonomous economic actor, making payment decisions and executing transactions without human intervention. Data providers earn revenue per query, creating a self-sustaining marketplace.
+**Payment Flow:**
+1. Sensor device collects data → publishes to marketplace
+2. User asks question in natural language
+3. AI agent decides which data to purchase
+4. Agent pays via x402 → receives data → analyzes → responds
 
-## How It Works
+### Marketplace Economics
 
-### For Data Providers (Sensor Devices)
-1. Install the mobile app or configure hardware device
-2. Device automatically collects sensor data (accelerometer, gyroscope, etc.)
-3. Data is published to the marketplace every 10 seconds
-4. Earn micropayments when agents query your data
+| Role | Earnings | Action |
+|------|----------|--------|
+| Data Provider | $0.001-$0.005/query | Publish sensor readings |
+| AI Agent | Autonomous | Decides when to buy data |
+| Blockchain | — | Trustless payment verification |
 
-### For Data Consumers (Users)
-1. Open the chat interface
-2. Ask questions in natural language: "Check sensor 0x123 for vibrations"
-3. AI agent autonomously pays for data and analyzes it
-4. Receive insights and alerts in conversational format
+### Tech Stack
 
-### The Marketplace
-- **Data Providers** earn $0.001-$0.005 per query
-- **AI Agents** autonomously decide when to purchase data
-- **Blockchain** ensures trustless payment verification
-- **No subscriptions** - pay only for what you use
-
-### Technology Overview
-
-**Mobile Apps** - React Native + Expo for cross-platform (iOS/Android/Web)  
-**AI Agent** - LangChain + Ollama for natural language understanding  
-**Payments** - x402 protocol on Base network for micropayments  
-**Storage** - LowDB for sensor data (future: decentralized storage)  
-**Hardware** - ESP32/M5Stack support for professional deployments
+| Layer | Technology |
+|-------|------------|
+| Mobile Apps | React Native + Expo (iOS/Android/Web) |
+| AI Agent | LangChain + Ollama (llama3.1:8b) |
+| Payments | x402 protocol on Base network |
+| Storage | LowDB (future: IPFS/Arweave) |
+| Hardware | ESP32/M5Stack support |
 
 ## Component Details
 
