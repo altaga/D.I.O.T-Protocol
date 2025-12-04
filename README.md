@@ -11,7 +11,7 @@
 
 # FAST LINKS (if you're a judge, click these links):
 
-* [Live Demo](https://diot-client.expo.dev)
+* [Live Demo](https://diot-client.expo.app/)
 * [Kiro Config](./.kiro)
 * [Development Guide](#built-with-kiro-ai)
 
