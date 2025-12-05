@@ -13,7 +13,7 @@
 
 * [Live Demo](https://diot-client.expo.app/)
 * [Kiro Config](./.kiro)
-* [Development Guide](#built-with-kiro-ai)
+* [Development Guide](#built-with-kiro-ai--professional-ai-assisted-development)
 
 ## Overview
 
