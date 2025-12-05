@@ -224,6 +224,8 @@ We combined **spec-driven development** for complex features (50+ requirements a
 
 **🪝 Agent Hooks** — 6 automated quality checks (security scan, lint, error handling, performance, complexity, commit messages). *Impact: 20 min manual review → 30 seconds*
 
+**📐 Specs Driven Development** — 5 comprehensive specification documents defining 50+ requirements across all system components.
+
 **📋 Steering Documents** — 5 always-included context docs eliminated repetitive explanations. *Result: 90% reduction in "how do I..." questions*
 
 **🔌 MCP Integration** — Coinbase Developer Platform server for live x402 development on this project.
