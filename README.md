@@ -258,7 +258,7 @@ We combined **spec-driven development** for complex features (50+ requirements a
 └── settings/       # MCP server configuration
 ```
 
-📄 [FULL CONFIG FOLDER](./kiro)
+📄 [FULL CONFIG FOLDER](./.kiro)
 
 ### Key Learnings
 
